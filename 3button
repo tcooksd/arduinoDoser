@@ -1,0 +1,76 @@
+const int BUTTON_PIN = 10; // the number of the pushbutton pin
+const int BUTTON_PIN2 = 11;
+const int BUTTON_PIN3 = 12;
+ 
+
+const int SHORT_PRESS_TIME = 500; // 500 milliseconds
+
+// Variables will change:
+int lastState = LOW;  // the previous state from the input pin
+int currentState;     // the current reading from the input pin
+int pushed; 
+int pump_Num;
+unsigned long pressedTime  = 0;
+unsigned long releasedTime = 0;
+const int ledPin =  3; 
+const int ledPin1 =  4; 
+const int ledPin2 =  5; 
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(BUTTON_PIN2, INPUT_PULLUP);
+  pinMode(BUTTON_PIN3, INPUT_PULLUP);
+  pinMode(ledPin, OUTPUT);
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+
+}
+
+void buttonSetup(int button_pin, int ledPinlocal) {
+  currentState = digitalRead(button_pin);
+
+
+
+  // save the the last state
+  // lastState = currentState;
+}
+
+void loop() {
+  digitalWrite(ledPin, HIGH);
+  digitalWrite(ledPin1, HIGH);
+  digitalWrite(ledPin2, HIGH);
+
+  if (digitalRead(BUTTON_PIN) == LOW) {
+        Serial.println("button selected");
+        Serial.println(BUTTON_PIN);
+        Serial.println(digitalRead(BUTTON_PIN));
+        digitalWrite(ledPin, LOW);
+        delay(5000);
+        } 
+        
+  if (digitalRead(BUTTON_PIN2) == LOW) {
+        Serial.println("button selected");
+        Serial.println(BUTTON_PIN2);
+        Serial.println(digitalRead(BUTTON_PIN2));
+        digitalWrite(ledPin1, LOW);
+        delay(1000);
+        } 
+        
+   if (digitalRead(BUTTON_PIN3) == LOW) {
+        Serial.println("button selected");
+        Serial.println(BUTTON_PIN3);
+        Serial.println(digitalRead(BUTTON_PIN3));
+        digitalWrite(ledPin2, LOW);
+        delay(1000);
+        } 
+    
+     
+    /* if (pushed == HIGH) {  
+        Serial.println("button selected");
+        Serial.println(pump_Num);
+     }
+  */
+
+}
+
